@@ -1,0 +1,30 @@
+1618372128702	Delete element
+1618372154753	Rename package 'edu.ucentral.servicio.beds.controller'
+1618373047537	Rename package 'edu.ucentral.servicio.beds.service'
+1618373133865	Copy package
+1618373143266	Delete element
+1618373163367	Rename package 'edu.ucentral.servicio.camas.service.copy'
+1618373288401	Rename package 'edu.ucentral.servicio.beds.repository'
+1618373307104	Rename package 'edu.ucentral.servicio.beds.model'
+1618419111641	Rename package 'edu.ucentral.servicio.camas'
+1618490889776	Copy compilation unit
+1618491051748	Rename local variable 'bed'
+1618491069422	Rename local variable 'dbBed'
+1618491167697	Rename method 'asignarEnfermera'
+1618491228662	Rename local variable 'nurses'
+1618491476591	Rename local variable 'dbBed'
+1618492474720	Rename type 'Uci'
+1618492730694	Rename type 'Unidad'
+1618494473775	Rename type 'Grupo'
+1618494984348	Delete element
+1618495009469	Rename compilation unit 'UCI.java'
+1618500924450	Rename field 'nombre'
+1618501625828	Rename field 'servico'
+1618523730589	Copy compilation unit
+1618523788358	Copy compilation unit
+1618523869803	Copy compilation unit
+1618540076988	Copy compilation unit
+1618581971146	Move package
+1618584452992	Rename local variable 'dbUnidad'
+1618584873286	Rename method 'addBed'
+1618588788287	Rename local variable 'dbUnidad'

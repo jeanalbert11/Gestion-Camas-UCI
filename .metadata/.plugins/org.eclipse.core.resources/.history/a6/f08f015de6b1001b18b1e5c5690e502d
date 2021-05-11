@@ -1,0 +1,23 @@
+spring.application.name=servico-zuul
+server.port=8090
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+#congifuracion del servicio zuul
+zuul.routes.estudiantes.service-id=servicio-patients 
+#Path de acceso al servicio
+zuul.routes.estudiantes.path=/api/patients/**
+
+
+zuul.routes.grupos.service-id=servicio-nurses 
+zuul.routes.grupos.path=/api/nurses/**
+
+zuul.routes.personal.service-id=servicio-personal-medico
+zuul.routes.personal.path=/api/personal/**
+
+zuul.routes.beds.service-id=servicio-beds
+zuul.routes.beds.path=/api/beds/**
+
+
+zuul.routes.security.service-id=servicio-beds
+zuul.routes.security.path=/api/beds/**

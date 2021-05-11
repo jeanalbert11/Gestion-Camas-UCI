@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<h1>Detalle IPS</h1>
+	<h3 th:text="'NIT   ' + ${ips.nit}"></h3>
+	<h3 th:text="'Nombre   ' + ${ips.nombre}"></h3>
+	<h3 th:text="'Razon Social   ' + ${ips.razonSocial}"></h3>
+	<h3 th:text="'Localidad   ' + ${ips.localidad}"></h3>
+	<h3 th:text="'Direccion   ' + ${ips.direccion}"></h3>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+		crossorigin="anonymous"></script>
+</body>
+</html>
