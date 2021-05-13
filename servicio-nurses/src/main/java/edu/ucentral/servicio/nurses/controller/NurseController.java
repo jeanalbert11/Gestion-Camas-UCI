@@ -46,21 +46,19 @@ public class NurseController extends CommonController<Nurse, NurseService> {
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(personDB));
 
 	}
-	
-	/*
 
-	@PostMapping("/crear-con-imagen")
+	@PostMapping("/crear-con-foto")
 	public ResponseEntity<?> crearConImagen(@Valid Nurse nurse, BindingResult result,
 			@RequestParam MultipartFile archivo) throws IOException {
 		// Validamos que el obj cumpla con las validaciones de las entitys
 		if (!archivo.isEmpty()) {
-			nurse.setImagen(archivo.getBytes());
+			nurse.setFoto(archivo.getBytes());
 		}
 
 		return super.crear(nurse, result);
 	}
 
-	@PutMapping("/editar-con-imagen/{id}")
+	@PutMapping("/editar-con-foto/{id}")
 	public ResponseEntity<?> editarConImagen(@Valid Nurse nurse, @PathVariable Long id, BindingResult result,
 			@RequestParam MultipartFile archivo) throws IOException {
 
@@ -73,30 +71,29 @@ public class NurseController extends CommonController<Nurse, NurseService> {
 		if (!optional.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
-		Nurse personDB = optional.get();
-		personDB.setNombre(nurse.getNombre());
-		personDB.setApellido(nurse.getApellido());
-		personDB.setTarjetaProfesional(nurse.getTarjetaProfesional());
+		Nurse nurseDB = optional.get();
+		nurseDB.setNombre(nurse.getNombre());
+		nurseDB.setApellido(nurse.getApellido());
+		nurseDB.setTarjetaProfesional(nurse.getTarjetaProfesional());
 
 		// Validamos que el archivo no este vacio
 		if (!archivo.isEmpty()) {
-			nurse.setImagen(archivo.getBytes());
+			nurseDB.setFoto(archivo.getBytes());
 		}
 
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(personDB));
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(nurseDB));
 
 	}
 
 	@GetMapping("/upload/img/{id}")
 	public ResponseEntity<?> verImagen(@PathVariable Long id) {
 		Optional<Nurse> optional = service.findById(id);
-		if (!optional.isPresent() || optional.get().getImagen() == null) {
+		if (!optional.isPresent() || optional.get().getFoto() == null) {
 			return ResponseEntity.notFound().build();
 		}
-		Resource img = new ByteArrayResource(optional.get().getImagen());
+		Resource img = new ByteArrayResource(optional.get().getFoto());
 		return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(img);
 
 	}
-	
-	*/
+
 }

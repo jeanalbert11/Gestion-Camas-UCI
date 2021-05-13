@@ -53,22 +53,22 @@ public class Nurse implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechaCreacion;
 
-	//@JsonIgnore
-	//@Lob
-	//private byte[] imagen;
+	@JsonIgnore
+	@Lob
+	private byte[] foto;
 
 	// @JsonIgnoreProperties(value = { "nurses" })
 	// @OneToMany(mappedBy = "nurse", fetch = FetchType.LAZY, cascade =
 	// CascadeType.ALL, orphanRemoval = true)
 	// private List<Beds> beds;
 
-	public Nurse(Long id, String cedula, String tarjetaProfesional, String nombre, String apellido /*,  byte[] imagen*/) {
+	public Nurse(Long id, String cedula, String tarjetaProfesional, String nombre, String apellido /*,  byte[] foto*/) {
 		this.id = id;
 		this.cedula = cedula;
 		this.tarjetaProfesional = tarjetaProfesional;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		//this.imagen = imagen;
+		this.foto = foto;
 
 	}
 
@@ -133,19 +133,18 @@ public class Nurse implements Serializable {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-/*
-	public byte[] getImagen() {
-		return imagen;
+
+	public byte[] getFoto() {
+		return foto;
 	}
 
-	public void setImagen(byte[] imagen) {
-		this.imagen = imagen;
+	public void setFoto(byte[] imagen) {
+		this.foto = imagen;
+	}	
+
+
+	public Integer getFotonHashCode() {
+		return (foto != null) ? foto.hashCode() : null;
 	}
-	
-	*/
-/*
-	public int getImagenHashCode() {
-		return (imagen != null) ? imagen.hashCode() : null;
-	}
-*/
+
 }
