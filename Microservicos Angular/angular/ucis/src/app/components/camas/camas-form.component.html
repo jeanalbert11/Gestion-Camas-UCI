@@ -1,0 +1,42 @@
+<div class="card bg-light mb-3">
+    <div class="card-header"> {{title}}</div>
+    <div class="card-body">
+        <button class="btn btn-secondary my-2" routerLink="/camas">back</button>
+
+        <form class="form-group">
+
+            <div class="form-group">
+                <label for="codigo">Room</label>
+                <input id="codigo" class="form-control" type="text" name="codigo" [(ngModel)]="model.codigo">
+                <div class="alert alert-danger" *ngIf=" error?.codigo">
+                    {{error.codigo}}
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label for="estado">Estado</label>
+                <input id="estado" class="form-control" type="text" name="estado" [(ngModel)]="model.estado">
+                <div class="alert alert-danger" *ngIf=" error?.estado">
+                    {{error.estado}}
+                </div>
+            </div> -->
+
+
+            <div class="form-group">
+                <label class="form-label" for="nurse">Enfermera</label>
+                <select id="nurse" class="form-control" [(ngModel)]="model.nurse" name="nurse">
+                    <option [ngValue]="undefined">--- Seleccione una enferemera ---</option>
+                    <option *ngFor="let enfermera of enfermeras" [ngValue]="enfermera">{{enfermera.nombre}} {{enfermera.apellido}}</option>
+                </select>
+                <div class="alert alert-danger" *ngIf=" error?.nurse">
+                    {{error.nurse}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="button" (click)="model.id? editar(): crear()">
+                    {{model.id? 'edit': 'create'}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

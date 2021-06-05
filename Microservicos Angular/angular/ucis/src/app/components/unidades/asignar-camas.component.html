@@ -1,0 +1,95 @@
+<mat-card>
+  <mat-card-header *ngIf="unit">
+    <mat-card-title>
+      Beds of the unit{{unit.acronimo}}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- PESTAÑAS -->
+    <mat-tab-group dynamicHeight [(selectedIndex)]="tabIndex">
+
+      <!-- PRIMER PESTAÑA -->
+
+      <mat-tab label="Add Beds ">
+
+        <!-- para realizar el filtro -->
+        <mat-form-field class="mx-3" style="width: 50%;">
+          <input matInput placeholder="Buscar Camas" (keyup)="filtrarPorCodigo($event.target.value)">
+        </mat-form-field>
+
+        <table mat-table [dataSource]="camasAsignar" class="mat-elevation-z8 mx-3">
+          <!-- check box -->
+          <ng-container matColumnDef="seleccion">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event? seleccionarDesSeleccionarTodos():null"
+                [checked]="seleccion.hasValue() && estanTodosSeleccionados()"
+                [indeterminate]="seleccion.hasValue() && !estanTodosSeleccionados()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let bed">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event? seleccion.toggle(bed):null"
+                [checked]="seleccion.isSelected(bed)">
+
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id. </th>
+            <td mat-cell *matCellDef="let bed"> {{bed.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef> Codigo. </th>
+            <td mat-cell *matCellDef="let bed"> {{bed.codigo}} </td>
+          </ng-container>
+
+
+
+          <!-- <ng-container matColumnDef="nurse">
+            <th mat-header-cell *matHeaderCellDef> Enfermera </th>
+            <td mat-cell *matCellDef="let bed"> {{bed.nurse.nombre}} </td>
+          </ng-container> -->
+
+
+
+          <tr mat-header-row *matHeaderRowDef="mostrarColumnas"></tr>
+          <tr mat-row *matRowDef="let bed; columns: mostrarColumnas;" (click)="seleccion.toggle(bed)"></tr>
+        </table>
+        <!-- boton para asignar -->
+        <button class="m-4" mat-raised-button color="primary" (click)="asignar()"
+          [disabled]="!seleccion.hasValue()">Asignar</button>
+      </mat-tab>
+
+
+      <!-- SEGUNDA PESTAÑA -->
+      <mat-tab label="Beds">
+        <table mat-table [dataSource]="camas" class="mat-elevation-z8 mx-3">
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id. </th>
+            <td mat-cell *matCellDef="let bed"> {{bed.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef> Codigo. </th>
+            <td mat-cell *matCellDef="let bed"> {{bed.codigo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let bed">
+              <button mat-mini-fab color="warn" 
+              (click)="eliminarCama(bed)">x</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="mostrarColumnasCamas"></tr>
+          <tr mat-row *matRowDef="let bed; columns: mostrarColumnasCamas;"></tr>
+        </table>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

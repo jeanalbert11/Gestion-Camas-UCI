@@ -9,20 +9,5 @@ import edu.ucentral.servicio.nurses.repository.INurseRepository;
 @Service
 public class NurseServiceImpl extends CommonServiceImpl<Nurse, INurseRepository> implements NurseService {
 
-	/*
-	 * @Autowired
-	 * 
-	 * private IAsignaturaRepository asignaturaRepository;
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional(readOnly = true) public Grupo findGrupoByEstudianteId(Long id)
-	 * { return repository.findGrupoByEstudianteId(id); }
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional(readOnly = true) public Iterable<Asignatura>
-	 * findAllAsignaturas() { return asignaturaRepository.findAll(); }
-	 */
 
 }

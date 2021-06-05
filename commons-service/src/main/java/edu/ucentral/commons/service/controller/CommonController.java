@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import edu.ucentral.commons.service.services.CommonService;
-@CrossOrigin({"http://localhost:4200"})
+
+@CrossOrigin({ "http://localhost:4200" })
 public class CommonController<E, S extends CommonService<E>> {
 
 	@Autowired
@@ -59,7 +60,7 @@ public class CommonController<E, S extends CommonService<E>> {
 	protected ResponseEntity<?> validar(BindingResult result) {
 		Map<String, Object> errores = new HashMap<>();
 		result.getFieldErrors().forEach(err -> {
-			errores.put(err.getField(), " El atributo " + err.getDefaultMessage());
+			errores.put(err.getField(), "El atributo " + err.getField() + " " + err.getDefaultMessage());
 		});
 
 		return ResponseEntity.badRequest().body(errores);

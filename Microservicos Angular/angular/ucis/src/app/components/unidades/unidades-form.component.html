@@ -1,0 +1,30 @@
+<div class="card bg-light mb-3">
+    <div class="card-header"> {{title}}</div>
+    <div class="card-body">
+        <button class="btn btn-secondary my-2" routerLink="/unidades">back</button>
+
+        <form class="form-group">
+
+            <div class="form-group">
+                <label for="acronimo">Acronimo</label>
+                <input id="acronimo" class="form-control" type="text" name="acronimo" [(ngModel)]="model.acronimo">
+                <div class="alert alert-danger" *ngIf=" error?.acronimo">
+                    {{error.acronimo}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <input id="tipo" class="form-control" type="text" name="tipo" [(ngModel)]="model.tipo">
+                <div class="alert alert-danger" *ngIf=" error?.tipo">
+                    {{error.tipo}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="button" (click)="model.id? editar(): crear()">
+                    {{model.id? 'edit': 'create'}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=servicio-beds/C:\/Users\/User001\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/2.3.7.RELEASE\/spring-data-jpa-2.3.7.RELEASE.jar=/maven.pomderived=/true=/=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/2.3.7.RELEASE=/=/maven.scope=/compile=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1614950428774"/>
     <typeInfo handle="=commons-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;edu.ucentral.commons.service.services{CommonService.java[CommonService" modifiers="513" timestamp="1617584157090"/>
 </typeInfoHistroy>

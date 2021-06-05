@@ -28,23 +28,22 @@ import edu.ucentral.servicio.nurses.service.NurseService;
 public class NurseController extends CommonController<Nurse, NurseService> {
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> editar(@Valid @RequestBody Nurse nurse, @PathVariable Long id, BindingResult result) {
+	public ResponseEntity<?> editar(@Valid @RequestBody Nurse nurse, BindingResult result, @PathVariable Long id) {
 
 		if (result.hasErrors()) {
 			return this.validar(result);
 		}
-
 		Optional<Nurse> optional = service.findById(id);
-
 		if (!optional.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
-		Nurse personDB = optional.get();
-		personDB.setNombre(nurse.getNombre());
-		personDB.setApellido(nurse.getApellido());
-
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(personDB));
-
+		Nurse nurseDB = optional.get();
+		nurseDB.setCedula(nurse.getCedula());
+		nurseDB.setTarjetaProfesional(nurse.getTarjetaProfesional());
+		nurseDB.setNombre(nurse.getNombre());
+		nurseDB.setApellido(nurse.getApellido());
+		nurseDB.setCorreo(nurse.getCorreo());
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(nurseDB));
 	}
 
 	@PostMapping("/crear-con-foto")
@@ -54,35 +53,32 @@ public class NurseController extends CommonController<Nurse, NurseService> {
 		if (!archivo.isEmpty()) {
 			nurse.setFoto(archivo.getBytes());
 		}
-
 		return super.crear(nurse, result);
 	}
 
 	@PutMapping("/editar-con-foto/{id}")
-	public ResponseEntity<?> editarConImagen(@Valid Nurse nurse, @PathVariable Long id, BindingResult result,
+	public ResponseEntity<?> editarConImagen(@Valid Nurse nurse, BindingResult result, @PathVariable Long id,
 			@RequestParam MultipartFile archivo) throws IOException {
-
 		if (result.hasErrors()) {
 			return this.validar(result);
 		}
-
 		Optional<Nurse> optional = service.findById(id);
-
 		if (!optional.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		Nurse nurseDB = optional.get();
+		nurseDB.setId(nurse.getId());
+		nurseDB.setCedula(nurse.getCedula());
+		nurseDB.setTarjetaProfesional(nurse.getTarjetaProfesional());
 		nurseDB.setNombre(nurse.getNombre());
 		nurseDB.setApellido(nurse.getApellido());
-		nurseDB.setTarjetaProfesional(nurse.getTarjetaProfesional());
+		nurseDB.setCorreo(nurse.getCorreo());
 
 		// Validamos que el archivo no este vacio
 		if (!archivo.isEmpty()) {
 			nurseDB.setFoto(archivo.getBytes());
 		}
-
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(nurseDB));
-
 	}
 
 	@GetMapping("/upload/img/{id}")
@@ -93,7 +89,11 @@ public class NurseController extends CommonController<Nurse, NurseService> {
 		}
 		Resource img = new ByteArrayResource(optional.get().getFoto());
 		return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(img);
+	}
 
+	@GetMapping("/nurses")
+	public ResponseEntity<?> listarEnfermeras() {
+		return ResponseEntity.ok().body(service.findAll());
 	}
 
 }

@@ -1,0 +1,37 @@
+<div class="card bg-light mb-3">
+    <div class="card-header"> {{title}}</div>
+    <div class="card-body">
+        <!-- <div class="card-body text-primary"> -->
+        <button class="btn btn-primary my-2" routerLink="/unidades/form">create</button>
+        <div class="alert alert-info" *ngIf="lista?.length==0">
+            There aren't units in the system
+        </div>
+        <table class="table table-hover table-striped" *ngIf="lista?.length>0">
+            <thead>
+                <th>Id</th>
+                <th>Acronimo</th>
+                <th>Tipo</th>
+                <th>Camas</th>
+                <th>Update </th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let unit of lista">
+                    <td>{{unit.id}}</td>
+                    <td>{{unit.acronimo}}</td>
+                    <td>{{unit.tipo}}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm" [routerLink]="['/unidades/asignar-camas', unit.id]">
+                            añadir({{unit.beds.length}});
+                        </button>
+                    </td>
+
+
+                    <td> <button class="btn btn-secondary btn-sm"
+                            [routerLink]="['/unidades/form', unit.id]">edit</button></td>
+                    <td> <button class="btn btn-danger btn-sm" (click)="eliminar(unit)">delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="card bg-light mb-3">
+    <div class="card-header"> {{title}}</div>
+    <div class="card-body">
+        <!-- <div class="card-body text-primary"> -->
+        <button class="btn btn-primary my-2" routerLink="/camas/form">create</button>
+        <div class="alert alert-info" *ngIf="lista?.length==0">
+            There aren't beds in the system
+        </div>
+        <table class="table table-hover table-striped" *ngIf="lista?.length>0">
+            <thead>
+                <th>Id</th>
+                <th>Room</th>
+                <!-- <th>Estado</th> -->
+                <th>Enfermera</th>
+                <!-- <th>Pacientes</th> -->
+                <th>Update </th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bed of lista">
+                    <td>{{bed.id}}</td>
+                    <td>{{bed.codigo}}</td>
+                    <!-- <td>{{bed.estado}}</td> -->
+                    <td>{{bed.nurse.nombre}} {{bed.nurse.apellido}}</td>
+                    <!-- <td>
+                        <button class="btn btn-info btn-sm" [routerLink]="['/beds/asignar-paciente',bed.id]">
+                            añadir({{bed.patient}});
+                        </button>
+                    </td> -->
+
+
+                    <td> <button class="btn btn-secondary btn-sm" [routerLink]="['/camas/form', bed.id]">edit</button>
+                    </td>
+                    <td> <button class="btn btn-danger btn-sm" (click)="eliminar(bed)">delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

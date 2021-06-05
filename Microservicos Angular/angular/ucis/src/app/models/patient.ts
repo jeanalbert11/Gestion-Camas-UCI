@@ -1,4 +1,6 @@
-export class Patient {
+import { Generic } from "./generic";
+
+export class Patient implements Generic{
    
     id!: number;
     cedula!: string;
@@ -6,13 +8,4 @@ export class Patient {
     apellido!: string;
     correo!: string;
     fechaCreacion!: string;
-
-  // constructor(
-  //   public id: number,
-  //   public cedula: string,
-  //   public nombre: string,
-  //   public apellido: string,
-  //   public correo: string,
-  //   public fechaCreacion: string
-  // ) {}
 }

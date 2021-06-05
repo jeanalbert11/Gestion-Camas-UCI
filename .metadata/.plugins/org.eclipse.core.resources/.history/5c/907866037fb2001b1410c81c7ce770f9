@@ -1,5 +1,0 @@
-package edu.ucentral.servicio.security.service;
-
-public interface IUserService {
-
-}

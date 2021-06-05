@@ -1,7 +1,12 @@
-<div class="card-border-primary md-3">
+<div class="card bg-light mb-3">
     <div class="card-header"> {{title}}</div>
-    <div class="card-body text-primary">
-        <table class="table table-hover table-stripe">
+    <div class="card-body">
+        <!-- <div class="card-body text-primary"> -->
+        <button class="btn btn-primary my-2" routerLink="/pacientes/form">create</button>
+        <div class="alert alert-info" *ngIf="lista?.length==0">
+            There aren't patients in the system
+        </div>
+        <table class="table table-hover table-striped" *ngIf="lista?.length>0">
             <thead>
                 <th>Id</th>
                 <th>Cedula</th>
@@ -9,18 +14,30 @@
                 <th>Apellido</th>
                 <th>Correo</th>
                 <th>Fecha Creación</th>
+                <th>Update </th>
+                <th>Delete</th>
             </thead>
             <tbody>
-                <tr *ngFor="let patient of patients">
+                <tr *ngFor="let patient of lista">
                     <td>{{patient.id}}</td>
                     <td>{{patient.cedula}}</td>
                     <td>{{patient.nombre}}</td>
                     <td>{{patient.apellido}}</td>
                     <td>{{patient.correo}}</td>
-                    <td>{{patient.fechaCreacion | date:'yyyy/MM/dd'}}</td>
-                </tr>
+                    <!-- se le agrego un pipe -->
+                    <td>{{patient.fechaCreacion | date:'medium'}}</td>
 
+                    <td> <button class="btn btn-secondary btn-sm"
+                            [routerLink]="['/pacientes/form', patient.id]">edit</button></td>
+                    <td> <button class="btn btn-danger btn-sm" (click)="eliminar(patient)">delete</button></td>
+                </tr>
             </tbody>
         </table>
+        <!-- <mat-paginator [length]="totalRegistros"
+              [pageSize]="totalPorPagina"
+              [pageIndex]="paginaActual"
+              [pageSizeOptions]="[3, 10, 25, 100]">
+        </mat-paginator> -->
+
     </div>
 </div>

@@ -1,1 +1,49 @@
-<p>enfermeras works!</p>
+<div class="card bg-light mb-3">
+    <div class="card-header"> {{title}}</div>
+    <div class="card-body">
+        <!-- <div class="card-body text-primary"> -->
+        <button class="btn btn-primary my-2" routerLink="/enfermeras/form">create</button>
+        <div class="alert alert-info" *ngIf="lista?.length==0">
+            There aren't nurses in the system
+        </div>
+        <table class="table table-hover table-striped" *ngIf="lista?.length>0">
+            <thead>
+                <th>Id</th>
+                <th>Cedula</th>
+                <th>Tarjeta Profesional</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Fecha Creación</th>
+                <th>Foto</th>
+                <th>Update </th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let nurse of lista">
+                    <td>{{nurse.id}}</td>
+                    <td>{{nurse.cedula}}</td>
+                    <td>{{nurse.tarjetaProfesional}}</td>
+                    <td>{{nurse.nombre}}</td>
+                    <td>{{nurse.apellido}}</td>
+                    <td>{{nurse.correo}}</td>
+                    <td>{{nurse.fechaCreacion | date:'medium'}}</td>
+                    <td>
+                        <img *ngIf="nurse.fotoHashCode" class="img-thumbnail rounded"
+                            style="width: 64px; cursor: pointer;"
+                            [src]="urlEndPoint+'/upload/img/'+nurse.id+'?fotoHashCode'+nurse.fotoHashCode">
+
+                        <img *ngIf="!nurse.fotoHashCode" class="img-thumbnail rounded"
+                            style="width: 64px; cursor: pointer;"
+                            [src]="'/assets/images/without-image.png'">
+                    </td>
+                    <!-- se le agrego un pipe -->
+
+                    <td> <button class="btn btn-secondary btn-sm"
+                            [routerLink]="['/enfermeras/form', nurse.id]">edit</button></td>
+                    <td> <button class="btn btn-danger btn-sm" (click)="eliminar(nurse)">delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

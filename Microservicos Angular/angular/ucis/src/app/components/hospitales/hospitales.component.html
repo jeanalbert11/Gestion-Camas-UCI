@@ -1,0 +1,36 @@
+<div class="card bg-light mb-3">
+    <div class="card-header"> {{title}}</div>
+    <div class="card-body">
+        <!-- <div class="card-body text-primary"> -->
+        <button class="btn btn-primary my-2" routerLink="/hospitales/form">create</button>
+        <div class="alert alert-info" *ngIf="lista?.length==0">
+            There aren't hospitals in the system
+        </div>
+        <table class="table table-hover table-striped" *ngIf="lista?.length>0">
+            <thead>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Razon Social</th>
+                <th>Telefono</th>
+                <th>Dirección</th>
+                <th>Tipo</th>
+                <th>Update </th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hospital of lista">
+                    <td>{{hospital.id}}</td>
+                    <td>{{hospital.nombre}}</td>
+                    <td>{{hospital.razonSocial}}</td>
+                    <td>{{hospital.telefono}}</td>
+                    <td>{{hospital.direccion}}</td>
+                    <td>{{hospital.tipo}}</td>
+
+                    <td> <button class="btn btn-secondary btn-sm"
+                            [routerLink]="['/hospitales/form', hospital.id]">edit</button></td>
+                    <td> <button class="btn btn-danger btn-sm" (click)="eliminar(hospital)">delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
