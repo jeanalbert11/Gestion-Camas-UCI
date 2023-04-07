@@ -26,7 +26,7 @@ export abstract class CommonFormComponent<
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       // const id: number = params.get('id');
-      const id: number = +params.get('id');
+      const id: number = + params.get('id');
       if (id) {
         this.service.ver(id).subscribe((m) => (this.model = m));
       }

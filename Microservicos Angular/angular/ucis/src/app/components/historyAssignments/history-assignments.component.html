@@ -9,30 +9,23 @@
         <table class="table table-hover table-striped" *ngIf="lista?.length>0">
             <thead>
                 <th>Id</th>
-                <th>Cama</th>
-                <th>Paciente</th>
-                <th>Enfermera</th>
-                <th>Estado</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Fin</th>
+                <th>Bed</th>
+                <th>Patient</th>
+                <th>Nurse</th>
+                <th>Start Date</th>
+                <th>End Date</th>
                 <th>Update </th>
                 <th>Delete</th>
             </thead>
             <tbody>
                 <tr *ngFor="let history_assignment of lista">
                     <td>{{history_assignment.id}}</td>
-                    <td>{{history_assignment.bed.codigo}}</td>
-                    <td>{{history_assignment.patient.nombre}}</td>
-                    <td>{{history_assignment.bed.nurse.nombre}}</td>
-                    <td>
-                        <span *ngIf="history_assignment.estado==true" class="badge bg-danger"> Ocupada </span>
-                        <span *ngIf="history_assignment.estado==false" class="badge bg-success"> Libre </span>
+                    <td>{{history_assignment.bed.code}}</td>
+                    <td>{{history_assignment.patient.name}}</td>
+                    <td>{{history_assignment.bed.nurse.name}}</td>
 
-                    </td>
-                    <!-- <span (click)="changeMethod()" *ngIf="!isNullOrUndefined(class?.classForeignId)">Libre </span> -->
-
-                    <td>{{history_assignment.fechaInicio}}</td>
-                    <td>{{history_assignment.fechaFin}}</td>
+                    <td>{{history_assignment.startDate}}</td>
+                    <td>{{history_assignment.endDate}}</td>
 
 
                     <td> <button class="btn btn-secondary btn-sm"

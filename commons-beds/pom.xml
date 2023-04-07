@@ -9,14 +9,17 @@
 		<version>2.4.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>edu.ucentral.commons-beds</groupId>
 	<artifactId>commons-beds</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>commons-pacientes</name>
 	<description>Demo project for Spring Boot</description>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+
 	<dependencies>
 
 		<!-- Libreria de commons-staff -->
@@ -26,17 +29,18 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-
 		<!-- Libreria de commons-patients -->
 		<dependency>
-			<groupId>edu.ucentral.commons-pacientes</groupId>
-			<artifactId>commons-pacientes</artifactId>
+			<groupId>edu.ucentral.commons-patients</groupId>
+			<artifactId>commons-patients</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>

@@ -18,8 +18,8 @@ export class HistoryAssignmentsFormComponent
   hospital: HistoryAssignment = new HistoryAssignment();
   error: any;
   //Para llenar el drown down list
-  pacientes: Patient[] = [];
-  camas: Bed[] = [];
+  patients: Patient[] = [];
+  beds: Bed[] = [];
 
   //Inyeccion de dependencias
   constructor(
@@ -48,8 +48,8 @@ export class HistoryAssignmentsFormComponent
     // obtenemos todas las pacientes
     this.service
       .findAllPatients()
-      .subscribe((pacientes) => (this.pacientes = pacientes));
+      .subscribe((patients) => (this.patients = patients));
     // obtenemos todas las pacientes
-    this.service.findAllBeds().subscribe((beds) => (this.camas = beds));
+    this.service.findAllBeds().subscribe((beds) => (this.beds = beds));
   }
 }

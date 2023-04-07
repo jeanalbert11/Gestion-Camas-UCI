@@ -7,24 +7,27 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.3</version>
-		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>edu.ucentral.servicio.eureka</groupId>
-	<artifactId>servicio-eureka</artifactId>
+	<groupId>edu.ucentral.microservice.eureka</groupId>
+	<artifactId>microservice-eureka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>servicio-eureka</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2020.0.1</spring-cloud.version>
+
+		<spring-boot-maven-plugin.version>2.3.4.RELEASE</spring-boot-maven-plugin.version>
+		<dockerfile-maven-version>1.4.13</dockerfile-maven-version>
 	</properties>
 	<dependencies>
-	<!-- libreria de jaxb-->
+		<!-- libreria de jaxb -->
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
 		</dependency>
 		
+		<!-- libreria de eureka server: servidor de nombre -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
@@ -56,6 +59,31 @@
 
 	<build>
 		<plugins>
+
+			<!-- pluging de spotify -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${dockerfile-maven-version}</version>
+				<executions>
+					<execution>
+						<id>build-docker-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<repository>universidadcentral/microservice-docker-${project.artifactId}</repository>
+					<tag>${project.version}</tag>
+					<buildArgs>
+						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

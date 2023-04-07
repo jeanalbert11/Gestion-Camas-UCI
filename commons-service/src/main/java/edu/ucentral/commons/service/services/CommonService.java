@@ -14,7 +14,7 @@ public interface CommonService<T> {
 
 	public void deleteById(Long id);
 
-	// Meotodo para pagina
+	//to pagination
 	public Iterable<T> findAll(Pageable pageable);
 
 }

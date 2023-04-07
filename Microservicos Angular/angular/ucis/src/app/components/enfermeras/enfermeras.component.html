@@ -9,12 +9,12 @@
         <table class="table table-hover table-striped" *ngIf="lista?.length>0">
             <thead>
                 <th>Id</th>
-                <th>Cedula</th>
-                <th>Tarjeta Profesional</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Correo</th>
-                <th>Fecha Creación</th>
+                <th>Identity Card</th>
+                <th>Professional Card</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Creation Date</th>
                 <th>Foto</th>
                 <th>Update </th>
                 <th>Delete</th>
@@ -22,12 +22,12 @@
             <tbody>
                 <tr *ngFor="let nurse of lista">
                     <td>{{nurse.id}}</td>
-                    <td>{{nurse.cedula}}</td>
-                    <td>{{nurse.tarjetaProfesional}}</td>
-                    <td>{{nurse.nombre}}</td>
-                    <td>{{nurse.apellido}}</td>
-                    <td>{{nurse.correo}}</td>
-                    <td>{{nurse.fechaCreacion | date:'medium'}}</td>
+                    <td>{{nurse.identityCard}}</td>
+                    <td>{{nurse.professionalCard}}</td>
+                    <td>{{nurse.name}}</td>
+                    <td>{{nurse.surname}}</td>
+                    <td>{{nurse.email}}</td>
+                    <td>{{nurse.creationDate | date:'medium'}}</td>
                     <td>
                         <img *ngIf="nurse.fotoHashCode" class="img-thumbnail rounded"
                             style="width: 64px; cursor: pointer;"

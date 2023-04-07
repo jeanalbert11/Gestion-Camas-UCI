@@ -6,61 +6,58 @@
         <form class="form-group">
 
             <div class="form-group">
-                <label class="form-label" for="patient">Paciente</label>
+                <label class="form-label" for="patient">Patient</label>
                 <select id="patient" class="form-control" [(ngModel)]="model.patient" name="patient">
-                    <option [ngValue]="undefined">--- Seleccione una paciente ---</option>
-                    <option *ngFor="let paciente of pacientes" [ngValue]="paciente">{{paciente.nombre}}
-                        {{paciente.apellido}}</option>
+                    <option [ngValue]="undefined">--- Select a patient ---</option>
+                    <option *ngFor="let patient of patients" [ngValue]="patient">{{patient.name}}
+                        {{patient.surname}}</option>
                 </select>
-                <div class="alert alert-danger" *ngIf=" error?.paciente">
-                    {{error.paciente}}
+                <div class="alert alert-danger" *ngIf=" error?.patient">
+                    {{error.patient}}
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="bed">Cama</label>
+                <label class="form-label" for="bed">Bed</label>
                 <select id="bed" class="form-control" [(ngModel)]="model.bed" name="bed">
-                    <option [ngValue]="undefined">--- Seleccione una cama ---</option>
-                    <option *ngFor="let cama of camas" [ngValue]="cama">{{cama.codigo}}</option>
+                    <option [ngValue]="undefined">--- Select a bed ---</option>
+                    <option *ngFor="let bed of beds" [ngValue]="bed">{{bed.code}}</option>
                 </select>
-                <div class="alert alert-danger" *ngIf=" error?.cama">
-                    {{error.cama}}
+                <div class="alert alert-danger" *ngIf=" error?.bed">
+                    {{error.bed}}
                 </div>
             </div>
 
-
-            <div class="col-md-4">
-
-
+            <!-- <div class="col-md-4">
                 <div class="form-check">
                     <label class="form-check-label" for="estado0"></label><br />
                     <input class="form-check-input" id="estado" type="radio" name="estado" value=true checked="checked"
                         [(ngModel)]="model.estado" />
                     <label class="form-check-label" for="estado1">Asignar</label>
                 </div>
-                <!-- <div class="form-check">
+                <div class="form-check">
                     <input class="form-check-input" id="estado" type="radio" name="estado" value=false
                         [(ngModel)]="model.estado" />
                     <label class="form-check-label" for="estado2">Disponible</label>
-                </div> -->
+                </div>
                 <div class="alert alert-danger" *ngIf=" error?.estado">
                     {{error.estado}}
                 </div>
-            </div>
-           
+            </div> -->
+
             <div class="form-group">
-                <label for="fechaInicio">Fecha Inicio</label>
-                <input id="fechaInicio" class="form-control" type="date" name="fechaInicio" [(ngModel)]="model.fechaInicio">
-                <div class="alert alert-danger" *ngIf=" error?.fechaInicio">
-                    {{error.fechaInicio}}
+                <label for="startDate">Start Date</label>
+                <input id="startDate" class="form-control" type="date" name="startDate" [(ngModel)]="model.startDate">
+                <div class="alert alert-danger" *ngIf=" error?.startDate">
+                    {{error.startDate}}
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="fechaFin">Fecha Fin</label>
-                <input  id="fechaFin" class="form-control" type="date" name="fechaFin" [(ngModel)]="model.fechaFin">
-                <div class="alert alert-danger" *ngIf=" error?.fechaFin">
-                    {{error.fechaFin}}
+                <label for="endDate">End Date</label>
+                <input id="endDate" class="form-control" type="date" name="endDate" [(ngModel)]="model.endDate">
+                <div class="alert alert-danger" *ngIf=" error?.endDate">
+                    {{error.endDate}}
                 </div>
             </div>
 

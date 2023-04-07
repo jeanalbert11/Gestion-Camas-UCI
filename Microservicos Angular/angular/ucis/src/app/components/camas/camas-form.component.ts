@@ -17,7 +17,7 @@ export class CamasFormComponent
   bed: Bed = new Bed();
   error: any;
   //Para llenar el drown down list
-  enfermeras: Nurse[] = [];
+  nurses: Nurse[] = [];
 
   //Inyeccion de dependencias
   constructor(service: BedService, router: Router, route: ActivatedRoute) {
@@ -42,7 +42,7 @@ export class CamasFormComponent
     // obtenemos todas las enfermeras
     this.service
       .findAllNurses()
-      .subscribe((enfermeras) => (this.enfermeras = enfermeras)); 
+      .subscribe((nurses) => (this.nurses = nurses)); 
   }
 
 }

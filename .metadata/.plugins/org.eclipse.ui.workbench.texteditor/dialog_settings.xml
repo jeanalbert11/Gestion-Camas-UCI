@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="maven"/>
 		<item key="wrap" value="true"/>
-		<item key="casesensitive" value="false"/>
+		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="room"/>
+			<item value="maven"/>
+			<item value="maven-surefire-"/>
+			<item value="fasterxml"/>
+			<item value="mave"/>
+			<item value="codehaus"/>
+			<item value="build"/>
 			<item value="Patient"/>
-			<item value="estado"/>
-			<item value="Resource"/>
-			<item value="herencia"/>
-			<item value="nurse"/>
-			<item value="estudianteDB"/>
+			<item value="Jso"/>
+			<item value="Json"/>
+			<item value="bedClient"/>
+			<item value="entityBd"/>
+			<item value="room"/>
+			<item value="bed"/>
+			<item value="Bed"/>
+			<item value="Nurse"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Address"/>
+			<item value="Person"/>
+			<item value="patientDB"/>
+			<item value="code"/>
+			<item value="pokemon"/>
+			<item value="Pokemon"/>
 			<item value="codigo"/>
 			<item value="HistoryAssignment"/>
-			<item value="patientDB"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1041"/>
-		<item key="DIALOG_Y_ORIGIN" value="357"/>
+		<item key="DIALOG_X_ORIGIN" value="1273"/>
+		<item key="DIALOG_Y_ORIGIN" value="349"/>
 		<item key="DIALOG_WIDTH" value="336"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="652"/>
+		<item key="DIALOG_Y_ORIGIN" value="362"/>
 	</section>
 </section>

@@ -28,6 +28,7 @@ public class CommonController<E, S extends CommonService<E>> {
 
 	@GetMapping
 	public ResponseEntity<?> listar() {
+		// ok: status 200
 		return ResponseEntity.ok().body(service.findAll());
 	}
 
@@ -35,6 +36,7 @@ public class CommonController<E, S extends CommonService<E>> {
 	public ResponseEntity<?> ver(@PathVariable Long id) {
 		Optional<E> optional = service.findById(id);
 		if (!optional.isPresent()) {
+			// notFound: status 404
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(optional.get());// enviando Entity como un JSON
@@ -47,12 +49,14 @@ public class CommonController<E, S extends CommonService<E>> {
 			return this.validar(result);
 		}
 		E entityBd = service.save(entity);
+		// status: 201
 		return ResponseEntity.status(HttpStatus.CREATED).body(entityBd);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> eliminar(@PathVariable Long id) {
 		service.deleteById(id);
+		// noContent: status 204
 		return ResponseEntity.noContent().build();
 	}
 
@@ -60,13 +64,12 @@ public class CommonController<E, S extends CommonService<E>> {
 	protected ResponseEntity<?> validar(BindingResult result) {
 		Map<String, Object> errores = new HashMap<>();
 		result.getFieldErrors().forEach(err -> {
-			errores.put(err.getField(), "El atributo " + err.getField() + " " + err.getDefaultMessage());
+			errores.put(err.getField(), "The Attribute " + err.getField() + " " + err.getDefaultMessage());
 		});
-
 		return ResponseEntity.badRequest().body(errores);
 	}
 
-	// Listar pero para la paginacion
+	// Listto pagination
 	@GetMapping("/pagina")
 	public ResponseEntity<?> listar(Pageable pageable) {
 		return ResponseEntity.ok().body(service.findAll(pageable));

@@ -44,8 +44,7 @@ export class EnfermerasFormComponent
           console.log(nurse);
           Swal.fire(
             'Created:',
-            `${this.nombreModel} ${nurse.nombre} was created successfully`,
-            // `${this.nombreModel} ${m.id} was created successfully`,
+            `${this.nombreModel} ${nurse.name} was created successfully`,
             'success'
           );
           this.router.navigate([this.redirect]);
@@ -68,7 +67,7 @@ export class EnfermerasFormComponent
           console.log(nurse);
           Swal.fire(
             'Update:',
-            `${this.nombreModel} ${nurse.nombre} was created successfully`,
+            `${this.nombreModel} ${nurse.name} was created successfully`,
             // `${this.nombreModel} ${m.id} was created successfully`,
             'success'
           );

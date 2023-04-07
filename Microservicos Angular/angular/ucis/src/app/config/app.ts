@@ -1,1 +1,1 @@
-export const END_POINT_BASE = 'http://localhost:8090/api';
+export const END_POINT_BASE = 'http://localhost:8090/api/v1/';

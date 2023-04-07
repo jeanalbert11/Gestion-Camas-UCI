@@ -10,14 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import edu.ucentral.commons.patients.model.Patient;
 
 @Entity
 @Table(name = "history_assignments")
@@ -28,35 +24,33 @@ public class HistoryAssignment implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
+	
+	@Column(name = "patient_id", unique = true)
+	private Long patientId;
 
-	@ManyToOne
-	// @JoinColumn(name = "patient_id")
-	Patient patient;
-
-	@ManyToOne
+	@JsonIgnoreProperties(value = { "historyAssignments" })
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bed_id")
-	Bed bed;
-
-	private boolean estado;
+	private Bed bed;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "fecha_inicio")
-	private Date fechaInicio;
+	@Column(name = "start_date")
+	private Date startDate;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "fecha_fin")
-	private Date fechaFin;
+	@Column(name = "end_date")
+	private Date endDate;
 
 	public HistoryAssignment() {
 
 	}
 
-	public HistoryAssignment(Long id, Patient patient, Bed bed, boolean estado, Date fechaInicio, Date fechaFin) {
-		this.patient = patient;
+	public HistoryAssignment(Long id, Long patientId, Bed bed, Date startDate, Date endDate) {
+		this.id = id;
+		this.patientId = patientId;
 		this.bed = bed;
-		this.estado = estado;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 
 	public Long getId() {
@@ -67,12 +61,12 @@ public class HistoryAssignment implements Serializable {
 		this.id = id;
 	}
 
-	public Patient getPatient() {
-		return patient;
+	public Long getPatientId() {
+		return patientId;
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setPatientId(Long patientId) {
+		this.patientId = patientId;
 	}
 
 	public Bed getBed() {
@@ -83,35 +77,32 @@ public class HistoryAssignment implements Serializable {
 		this.bed = bed;
 	}
 
-	public boolean isEstado() {
-		return estado;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-	public Date getFechaInicio() {
-		return fechaInicio;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
-	public Date getFechaFin() {
-		return fechaFin;
-	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof HistoryAssignment)) {
+			return false;
+		}
+		HistoryAssignment historyAssignment = (HistoryAssignment) obj;
 
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
+		return this.patientId != null && this.patientId.equals(historyAssignment.getPatientId());
 	}
-
-	/*
-	 * public Patient getPatient() { return patient; }
-	 * 
-	 * public void setPatient(Patient patient) { this.patient = patient; }
-	 * 
-	 * public void addPatient(Patient patient) { this.patient = patient; }
-	 */
 }

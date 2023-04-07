@@ -5,39 +5,39 @@
 
         <form class="form-group">
             <div class="form-group">
-                <label for="cedula">Cedula</label>
-                <input id="cedula" class="form-control" type="number" name="cedula" [(ngModel)]="model.cedula">
-                <div class="alert alert-danger" *ngIf=" error?.cedula">
-                    {{error.cedula}}
+                <label for="identityCard">Identity Card</label>
+                <input id="identityCard" class="form-control" type="number" name="identityCard" [(ngModel)]="model.identityCard">
+                <div class="alert alert-danger" *ngIf=" error?.identityCard">
+                    {{error.identityCard}}
                 </div>
             </div>
             <div class="form-group">
-                <label for="tarjetaProfesional">Tarjeta Profesional</label>
-                <input id="tarjetaProfesional" class="form-control" type="number" name="tarjetaProfesional"
-                    [(ngModel)]="model.tarjetaProfesional">
-                <div class="alert alert-danger" *ngIf=" error?.tarjetaProfesional">
-                    {{error.tarjetaProfesional}}
+                <label for="professionalCard">Professional Card </label>
+                <input id="professionalCard" class="form-control" type="number" name="professionalCard"
+                    [(ngModel)]="model.professionalCard">
+                <div class="alert alert-danger" *ngIf=" error?.professionalCard">
+                    {{error.professionalCard}}
                 </div>
             </div>
             <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" class="form-control" type="text" name="nombre" [(ngModel)]="model.nombre">
-                <div class="alert alert-danger" *ngIf=" error?.nombre">
-                    {{error.nombre}}
+                <label for="name">Name</label>
+                <input id="name" class="form-control" type="text" name="name" [(ngModel)]="model.name">
+                <div class="alert alert-danger" *ngIf=" error?.name">
+                    {{error.name}}
                 </div>
             </div>
             <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <input id="apellido" class="form-control" type="text" name="apellido" [(ngModel)]="model.apellido">
-                <div class="alert alert-danger" *ngIf=" error?.apellido">
-                    {{error.apellido}}
+                <label for="surname">Surname</label>
+                <input id="surname" class="form-control" type="text" name="surname" [(ngModel)]="model.surname">
+                <div class="alert alert-danger" *ngIf=" error?.surname">
+                    {{error.surname}}
                 </div>
             </div>
             <div class="form-group">
-                <label for="correo">Correo</label>
-                <input id="correo" class="form-control" type="email" name="correo" [(ngModel)]="model.correo">
-                <div class="alert alert-danger" *ngIf=" error?.correo">
-                    {{error.correo}}
+                <label for="email">Email</label>
+                <input id="email" class="form-control" type="email" name="email" [(ngModel)]="model.email">
+                <div class="alert alert-danger" *ngIf=" error?.email">
+                    {{error.email}}
                 </div>
             </div>
 

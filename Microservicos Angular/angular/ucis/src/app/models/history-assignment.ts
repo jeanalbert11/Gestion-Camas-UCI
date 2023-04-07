@@ -6,7 +6,6 @@ export class HistoryAssignment implements Generic {
   id!: number;
   patient!: Patient;
   bed!: Bed;
-  estado!: boolean;
-  fechaInicio!: string;
-  fechaFin!: string;
+  startDate!: string;
+  endDate!: string;
 }

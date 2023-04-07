@@ -105,7 +105,7 @@ export class AsignarCamasComponent implements OnInit {
 
   eliminarCama(bed: Bed): void {
     Swal.fire({
-      title: `Are you sure you want to eliminate ${bed.codigo}?`,
+      title: `Are you sure you want to eliminate ${bed.code}?`,
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -118,7 +118,7 @@ export class AsignarCamasComponent implements OnInit {
           this.camas = this.camas.filter((b)  => b.id !== bed.id);
           Swal.fire(
             'Eliminado:',
-            `Cama ${bed.codigo} eliminada con exito de la unidad ${unit.id} `,
+            `Cama ${bed.code} eliminada con exito de la unidad ${unit.id} `,
             'success'
           );
         });

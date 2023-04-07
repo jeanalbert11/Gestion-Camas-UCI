@@ -21,11 +21,10 @@
 	<dependencies>
 		<!-- Libreria de commons-services -->
 		<dependency>
-			<groupId>edu.ucentral.common-service</groupId>
-			<artifactId>common-service</artifactId>
+			<groupId>edu.ucentral.commons.service</groupId>
+			<artifactId>edu.ucentral.commons.service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

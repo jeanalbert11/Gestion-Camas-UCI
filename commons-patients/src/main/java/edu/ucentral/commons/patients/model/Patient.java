@@ -2,11 +2,14 @@ package edu.ucentral.commons.patients.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -14,11 +17,12 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import edu.ucentral.commons.patients.model.Patient;
-import edu.ucentral.commons.patients.model.Patient;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "patients")
+
 public class Patient implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,96 +31,124 @@ public class Patient implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty(message = "campo vacio")
-	private String cedula;
+	@NotEmpty(message = "empty field")
+	@Column(name = "identity_card")
+	private String identityCard;
 
-	@NotEmpty(message = "campo vacio")
-	@Size(min = 3, max = 20, message = "el número de caracteres debe estar entre 3 y 20")
-	private String nombre;
+	@NotEmpty(message = "empty field")
+	@Size(min = 3, max = 20, message = "the number of character must be between 3 and 20")
+	private String name;
 
-	@NotEmpty(message = "campo vacio")
-	@Size(min = 3, max = 20, message = "el número de caracteres debe estar entre 3 y 20")
-	private String apellido;
+	@NotEmpty(message = "empty field")
+	@Size(min = 3, max = 20, message = "the number of character must be between 3 and 20")
+	private String surname;
 
-	@NotEmpty(message = "campo vacio")
-	@Email(message = "no es una dirección  de correo valido")
-	private String correo;
+	@NotEmpty(message = "empty field")
+	@Email(message = "It's not a valid email address")
+	private String email;
 
-	@Column(name = "fecha_creacion")
+	@Column(name = "creation_date")
 	@Temporal(TemporalType.DATE)
-	private Date fechaCreacion;
+	private Date creationDate;
 
-	// @OneToMany(mappedBy = "patient")
-	//Set<HistoryAssignment> historyAssignments;
-	
+	@JsonIgnoreProperties(value = { "patient" }, allowSetters = true)
+	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+	private Address address;
+
+//	@Transient
+//	private List<Address> addresses;
+
 	public Patient() {
-		// TODO Auto-generated constructor stub
+//		addresses = new ArrayList<Address>();
 	}
 
-	public Patient(Long id, @NotEmpty(message = "campo vacio") String cedula, String nombre, String apellido,
-			String correo, Date fechaCreacion) {
+	public Patient(Long id, String identityCard, String name, String surname, String email, Date creationDate) {
 		this.id = id;
-		this.cedula = cedula;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.correo = correo;
-		this.fechaCreacion = fechaCreacion;
+		this.identityCard = identityCard;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.creationDate = creationDate;
 	}
 
 	@PrePersist
 	void prePersist() {
-		fechaCreacion = new Date();
+		creationDate = new Date();
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	// secretariaacademicaficb@ucentral.edu.co
-	// direccioningenieriadesistemas@ucentral.edu.co
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getCedula() {
-		return cedula;
+	public String getIdentityCard() {
+		return identityCard;
 	}
 
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
+	public void setIdentityCard(String identityCard) {
+		this.identityCard = identityCard;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Date getFechaCreacion() {
-		return fechaCreacion;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+//	public List<Address> getAddresses() {
+//		return addresses;
+//	}
+//
+//	public void setAddresses(List<Address> addresses) {
+//		this.addresses = addresses;
+//	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Patient)) {
+			return false;
+		}
+		Patient patient = (Patient) obj;
+		return this.id != null && this.id.equals(patient.getId());
+	}
 }

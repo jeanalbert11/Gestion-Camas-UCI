@@ -6,26 +6,40 @@
         <form class="form-group">
 
             <div class="form-group">
-                <label for="codigo">Room</label>
-                <input id="codigo" class="form-control" type="text" name="codigo" [(ngModel)]="model.codigo">
-                <div class="alert alert-danger" *ngIf=" error?.codigo">
-                    {{error.codigo}}
+                <label for="code">Code</label>
+                <input id="code" class="form-control" type="text" name="code" [(ngModel)]="model.code">
+                <div class="alert alert-danger" *ngIf=" error?.code">
+                    {{error.code}}
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <label for="estado">Estado</label>
-                <input id="estado" class="form-control" type="text" name="estado" [(ngModel)]="model.estado">
-                <div class="alert alert-danger" *ngIf=" error?.estado">
-                    {{error.estado}}
+
+            <div class="col-md-4">
+                <div class="form-check">
+                    <label class="form-check-label" for="state0"></label><br />
+                    <input class="form-check-input" id="state" type="radio" name="state" value=false
+                        [(ngModel)]="model.state" />
+                    <label class="form-check-label" for="state2">Available</label>
                 </div>
-            </div> -->
+
+                <div class="form-check">
+                    <label class="form-check-label" for="state1"></label><br />
+                    <input class="form-check-input" id="state" type="radio" name="state" value=true checked="checked"
+                        [(ngModel)]="model.state" />
+                    <label class="form-check-label" for="state1">Busy</label>
+                </div>
+
+                <div class="alert alert-danger" *ngIf=" error?.state">
+                    {{error.state}}
+                </div>
+            </div>
 
 
             <div class="form-group">
-                <label class="form-label" for="nurse">Enfermera</label>
+                <label class="form-label" for="nurse">Nurse</label>
                 <select id="nurse" class="form-control" [(ngModel)]="model.nurse" name="nurse">
-                    <option [ngValue]="undefined">--- Seleccione una enferemera ---</option>
-                    <option *ngFor="let enfermera of enfermeras" [ngValue]="enfermera">{{enfermera.nombre}} {{enfermera.apellido}}</option>
+                    <option [ngValue]="undefined">--- Select a nurse ---</option>
+                    <option *ngFor="let nurse of nurses" [ngValue]="nurse">{{nurse.name}}
+                        {{nurse.surname}}</option>
                 </select>
                 <div class="alert alert-danger" *ngIf=" error?.nurse">
                     {{error.nurse}}

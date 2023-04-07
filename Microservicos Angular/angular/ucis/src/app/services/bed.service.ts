@@ -16,8 +16,8 @@ export class BedService extends CommonService<Bed> {
   constructor(http: HttpClient) {
     super(http);
   }
-  public filtraPorCodigo(room: string): Observable<Bed[]> {
-    return this.http.get<Bed[]>(`${this.urlEndPoint}/filtrarPorCodigo/${room}`);
+  public filtraPorCodigo(code: string): Observable<Bed[]> {
+    return this.http.get<Bed[]>(`${this.urlEndPoint}/filtrarPorCodigo/${code}`);
   }
 
   findAllNurses(): Observable<Nurse[]> {

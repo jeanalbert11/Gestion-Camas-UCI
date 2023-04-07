@@ -17,11 +17,11 @@ export class NurseService extends CommonService<Nurse> {
   createProfileImage(nurse: Nurse, archivo: File): Observable<Nurse> {
     const formData = new FormData();
     formData.append('archivo', archivo);
-    formData.append('cedula', nurse.cedula);
-    formData.append('tarjetaProfesional', nurse.tarjetaProfesional);
-    formData.append('nombre', nurse.nombre);
-    formData.append('apellido', nurse.apellido);
-    formData.append('correo', nurse.correo);
+    formData.append('identityCard', nurse.identityCard);
+    formData.append('professionalCard', nurse.professionalCard);
+    formData.append('name', nurse.name);
+    formData.append('surname', nurse.surname);
+    formData.append('email', nurse.email);
     return this.http.post<Nurse>(
       this.urlEndPoint + '/crear-con-foto',
       formData
@@ -31,11 +31,11 @@ export class NurseService extends CommonService<Nurse> {
   updateProfileImage(nurse: Nurse, archivo: File): Observable<Nurse> {
     const formData = new FormData();
     formData.append('archivo', archivo);
-    formData.append('cedula', nurse.cedula);
-    formData.append('tarjetaProfesional', nurse.tarjetaProfesional);
-    formData.append('nombre', nurse.nombre);
-    formData.append('apellido', nurse.apellido);
-    formData.append('correo', nurse.correo);
+    formData.append('identityCard', nurse.identityCard);
+    formData.append('professionalCard', nurse.professionalCard);
+    formData.append('name', nurse.name);
+    formData.append('surname', nurse.surname);
+    formData.append('email', nurse.email);
     return this.http.put<Nurse>(
       `${this.urlEndPoint}/editar-con-foto/${nurse.id}`,
       formData

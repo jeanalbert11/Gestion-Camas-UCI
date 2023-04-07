@@ -3,13 +3,15 @@ package edu.ucentral.commons.service.services;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 public class CommonServiceImpl<E, R extends PagingAndSortingRepository<E, Long>> implements CommonService<E> {
 
+	// protected: Ya que así poremos usarlo por medio de la herencia
 	@Autowired
-	protected R repository;// Protegido ya que asi podeos usarlo por medio de la herencia
+	protected R repository;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -20,7 +22,6 @@ public class CommonServiceImpl<E, R extends PagingAndSortingRepository<E, Long>>
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<E> findById(Long id) {
-
 		return repository.findById(id);
 	}
 
@@ -36,7 +37,8 @@ public class CommonServiceImpl<E, R extends PagingAndSortingRepository<E, Long>>
 		repository.deleteById(id);
 
 	}
-	// Listar pero para la paginacion
+
+	// List to pagination
 	@Override
 	public Iterable<E> findAll(Pageable pageable) {
 		return repository.findAll(pageable);
